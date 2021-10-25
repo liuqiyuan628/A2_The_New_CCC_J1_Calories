@@ -9,10 +9,18 @@ namespace A2_The_New_CCC.Controllers
 {
     public class J1Controller : ApiController
     {
-
+        /// <summary>
+        /// customer can chose 1-4 from the menu. 
+        /// compute the total calories of the meal a customer ordered.
+        /// </summary>
+        /// <param name="burger"></param>
+        /// <param name="drink"></param>
+        /// <param name="side"></param>
+        /// <param name="dessert"></param>
+        /// <returns>the total calories</returns>
         [HttpGet]
         [Route("api/J1/Menu/{burger}/{drink}/{side}/{dessert}")]
-        public int Menu(int burger, int drink, int side, int dessert)
+        public string Menu(int burger, int drink, int side, int dessert)
         {
 
             int burgerCal = 0;
@@ -118,9 +126,11 @@ namespace A2_The_New_CCC.Controllers
             }
 
             int totalCal = burgerCal + drinkCal + sideCal + dessertCal;
-            return totalCal;
-          
-
+            string countCal = totalCal.ToString();
+            return "Your total Calorie count is " + countCal + ".";
+            //http://localhost:50219/api/j1/menu/1/2/3/4
+            //http://localhost:50219/api/j1/menu/4/4/4/4
+             
         }
     }
 }
